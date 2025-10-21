@@ -41,6 +41,16 @@ nav ul li {
     list-style: none;
 }
 
+nav ul li a {
+    color: var(--secondary-black);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
 header, footer, main {
     padding: var(--spacer);
 }
