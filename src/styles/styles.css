@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap');
+
+:root {
+    --primary-green: #495e57;
+    --primary-yellow: #f4ce14;
+    --secondary-peach: #ee9972;
+    --secondary-cream: #fbdabb;
+    --secondary-gray: #edefee;
+    --secondary-black: #333333;
+    --text-serif: 'Markazi Text', serif;
+    --text-sans: 'Karla', sans-serif;
+    --spacer: 1rem;
+    --border-radius: .5rem;
+
+
+    font-family: var(--text-sans);
+    color: var(--secondary-black);
+}
+
+
+#root {
+    display: block;
+}
+
+header img {
+    grid-area: logo;
+    width: 200px;
+}
+
+nav ul {
+    grid-area: menu;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: var(--spacer);
+
+}
+
+nav ul li {
+    list-style: none;
+}
+
+header, footer, main {
+    padding: var(--spacer);
+}
+
+footer {
+    text-align: center;
+    color: var(--primary-green);
+}
+
+header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "logo menu";
+    align-items: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--text-serif);
+    color: var(--primary-green);
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-family: var(--text-sans);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5em;
+}
+
+p.lead {
+    font-size: 1.125rem;
+}
+
+.card p {
+    font-size: 1rem;
+    color: var(--secondary-gray);
+}
+
+p.highlight {
+    font-size: 1rem;
+    color: var(--secondary-gray);
+}
+
+.text-yellow {
+    color: var(--primary-yellow);
+}
+
+.text-green {
+    color: var(--primary-green);
+}
+
+.text-black {
+    color: var(--primary-black);
+}
+
+.background-yellow {
+    background-color: var(--primary-yellow);
+}
+
+.background-green {
+    background-color: var(--primary-green);
+}
+
+.background-gray {
+    background-color: var(--secondary-gray);
+}
+
+.card {
+    background-color: var(--secondary-gray);
+    border-radius: var(--border-radius);
+    overflow: clip;
+}
+
+.card .image {
+    width: 100%;
+    padding-top: 75%;
+}
+
+.card .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacer);
+}
+
+button {
+    font-family: var(--text-sans);
+    font-size: 1rem;
+    background-color: var(--primary-yellow);
+    color: var(--secondary-black);
+    padding: var(--spacer);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid var(--primary-yellow);
+}
+
+button:hover {
+    background-color: var(--secondary-gray);
+}
+
+button:active {
+    background-color: var(--secondary-gray);
+    color: var(--primary-green);
+}
+
+button.secondary {
+    background-color: var(--secondary-cream);
+    border-color: var(--secondary-peach);
+}
+
+button.tertiary {
+    background-color: unset;
+}
+
+button.link {
+    background-color: unset;
+    border-color: rgba(0, 0, 0, 0);
+    text-decoration: underline;
+}
+
