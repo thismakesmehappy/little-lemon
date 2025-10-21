@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap');
+@import "./card.css";
+@import "./grid.css";
+@import "./reset.css";
 
 :root {
     --primary-green: #495e57;
@@ -10,8 +13,12 @@
     --secondary-black: #333333;
     --text-serif: 'Markazi Text', serif;
     --text-sans: 'Karla', sans-serif;
-    --spacer: 1rem;
-    --border-radius: .5rem;
+    --spacer-unit: 1rem;
+    --spacer-xs: .25rem;
+    --spacer-sm: .5rem;
+    --spacer-md: 1rem;
+    --spacer-lg: 1.5rem;
+    --spacer-xl: 2rem;
 
 
     font-family: var(--text-sans);
@@ -33,7 +40,7 @@ nav ul {
     display: flex;
     justify-content: end;
     align-items: center;
-    gap: var(--spacer);
+    gap: var(--spacer-unit);
 
 }
 
@@ -51,8 +58,8 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-header, footer, main {
-    padding: var(--spacer);
+header, footer {
+    padding: var(--spacer-unit);
 }
 
 footer {
@@ -76,10 +83,15 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 4rem;
     font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 h2 {
     font-size: 2.5rem;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 2rem;
 }
 
 h3 {
@@ -89,24 +101,16 @@ h3 {
     text-transform: uppercase;
 }
 
-.card h2 {
-    font-size: 1.25rem;
-    font-weight: bold;
-}
-
 p {
     font-size: 1rem;
     line-height: 1.5em;
+    margin-bottom: 1rem;
 }
 
 p.lead {
     font-size: 1.125rem;
 }
 
-.card p {
-    font-size: 1rem;
-    color: var(--secondary-gray);
-}
 
 p.highlight {
     font-size: 1rem;
@@ -121,8 +125,20 @@ p.highlight {
     color: var(--primary-green);
 }
 
+.text-white {
+    color: #fff;
+}
+
+.text-gray {
+    color: var(--secondary-gray);
+}
+
+.text-peach {
+    color: var(--secondary-peach);
+}
+
 .text-black {
-    color: var(--primary-black);
+    color: var(--secondary-black);
 }
 
 .background-yellow {
@@ -137,62 +153,86 @@ p.highlight {
     background-color: var(--secondary-gray);
 }
 
-.card {
-    background-color: var(--secondary-gray);
-    border-radius: var(--border-radius);
-    overflow: clip;
-}
-
-.card .image {
-    width: 100%;
-    padding-top: 75%;
-}
-
-.card .image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: var(--spacer);
+    padding: var(--spacer-unit);
 }
 
-button {
+.btn {
     font-family: var(--text-sans);
     font-size: 1rem;
     background-color: var(--primary-yellow);
     color: var(--secondary-black);
-    padding: var(--spacer);
-    border-radius: var(--border-radius);
+    padding: var(--spacer-xs) var(--spacer-md);
+    border-radius: var(--spacer-sm);
     cursor: pointer;
     font-weight: bold;
     border: 2px solid var(--primary-yellow);
 }
 
-button:hover {
+.btn:hover {
     background-color: var(--secondary-gray);
+    border-color: var(--secondary-gray);
 }
 
-button:active {
+.btn:active {
     background-color: var(--secondary-gray);
     color: var(--primary-green);
+    border-color: var(--secondary-gray);
 }
 
-button.secondary {
+.btn.btn-secondary {
     background-color: var(--secondary-cream);
     border-color: var(--secondary-peach);
 }
 
-button.tertiary {
+.btn.btn-tertiary {
     background-color: unset;
 }
 
-button.link {
+.btn.btn-link {
     background-color: unset;
     border-color: rgba(0, 0, 0, 0);
     text-decoration: underline;
+}
+
+.hero {
+    background-color: var(--primary-green);
+    padding: 0;
+    margin: 0;
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 20rem 1fr 200px;
+    grid-template-areas: "hero-content . hero-image";
+    margin-bottom: 75px;
+}
+
+.hero-content {
+    grid-area: hero-content;
+}
+
+.hero-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    overflow: clip;
+    align-content: center;
+    border-radius: var(--spacer-unit);
+    margin-bottom: -75px;
+    grid-area: hero-image
+}
+
+.hero-image img {
+    max-width: 100%;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacer-lg);
 }
 
