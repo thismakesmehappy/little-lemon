@@ -4,7 +4,12 @@
     grid-gap: var(--spacer-lg); /* Space between columns */
 }
 
-.col, .col-1 {
+.col {
+    grid-column: span auto;
+    height: 100%;
+}
+
+.col-1 {
     grid-column: span 1;
     height: 100%;
 }
