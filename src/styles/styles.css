@@ -3,6 +3,8 @@
 @import "./card.css";
 @import "./grid.css";
 @import "./reset.css";
+@import "./buttons.css";
+@import "./forms.css";
 
 :root {
     --primary-green: #495e57;
@@ -85,6 +87,7 @@ h1 {
     font-weight: bold;
     margin-bottom: 0;
     margin-top: 0;
+    color: var(--primary-green);
 }
 
 h2 {
@@ -92,13 +95,17 @@ h2 {
     margin-bottom: 0;
     margin-top: 0;
     line-height: 2rem;
+    color: var(--primary-green);
+
 }
 
-h3 {
+h3, .h3 {
     font-size: 1.25rem;
     font-family: var(--text-sans);
     font-weight: bold;
     text-transform: uppercase;
+    color: var(--primary-green);
+    margin-bottom: var(--spacer-unit);
 }
 
 p {
@@ -159,44 +166,6 @@ p.highlight {
     padding: var(--spacer-unit);
 }
 
-.btn {
-    font-family: var(--text-sans);
-    font-size: 1rem;
-    background-color: var(--primary-yellow);
-    color: var(--secondary-black);
-    padding: var(--spacer-xs) var(--spacer-md);
-    border-radius: var(--spacer-sm);
-    cursor: pointer;
-    font-weight: bold;
-    border: 2px solid var(--primary-yellow);
-}
-
-.btn:hover {
-    background-color: var(--secondary-gray);
-    border-color: var(--secondary-gray);
-}
-
-.btn:active {
-    background-color: var(--secondary-gray);
-    color: var(--primary-green);
-    border-color: var(--secondary-gray);
-}
-
-.btn.btn-secondary {
-    background-color: var(--secondary-cream);
-    border-color: var(--secondary-peach);
-}
-
-.btn.btn-tertiary {
-    background-color: unset;
-}
-
-.btn.btn-link {
-    background-color: unset;
-    border-color: rgba(0, 0, 0, 0);
-    text-decoration: underline;
-}
-
 .hero {
     background-color: var(--primary-green);
     padding: 0;
@@ -235,4 +204,41 @@ p.highlight {
     align-items: center;
     margin-bottom: var(--spacer-lg);
 }
+
+.page-head {
+    background-color: var(--primary-green);
+}
+
+.page-head h1 {
+    color: var(--primary-yellow);
+}
+
+.page-head h2, h3, p, .h3 {
+    color: var(--secondary-gray);
+}
+
+.booking-form {
+    max-width: 30rem;
+    background-color: var(--secondary-gray);
+    padding: var(--spacer-unit);
+    margin: 0 auto;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+
 

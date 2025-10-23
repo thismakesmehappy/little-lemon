@@ -1,32 +1,32 @@
-const Button = ({children, to, type, onClickAction}) => {
-    let className = "";
+const Button = ({children, to, type, onClickAction, className}) => {
+    let buttonClassName = className ? className : "";
     switch (type) {
         case "primary":
-            className += "btn btn-primary";
+            buttonClassName += " btn btn-primary";
             break;
         case "secondary":
-            className += "btn btn-secondary";
+            buttonClassName += " btn btn-secondary";
             break;
         case "tertiary":
-            className += "btn btn-tertiary";
+            buttonClassName += " btn btn-tertiary";
             break;
         case "link":
-            className += "btn btn-link";
+            buttonClassName += " btn btn-link";
             break;
         default:
-            className += "btn btn-primary";
+            buttonClassName += " btn btn-primary";
     }
 
     if (to) {
         return (
             <a href={to}>
                 <button {...(onClickAction && {onClick: onClickAction})}
-                        className={className}>{children}</button>
+                        className={buttonClassName}>{children}</button>
             </a>)
     }
 
     return <button {...(onClickAction && {onClick: onClickAction})}
-                   className={className}>{children}</button>
+                   className={buttonClassName}>{children}</button>
 }
 
 export default Button;

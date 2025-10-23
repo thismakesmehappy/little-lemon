@@ -38,9 +38,9 @@ const Homepage = () => {
     return (
         <>
             <Hero image={apps} alt={"A set of brucchettas presented on a black surface by a serer wearing an apron"}>
-                <Title color={"yellow"}>Little Lemon</Title>
-                <Subtitle color={"gray"}>Chicago</Subtitle>
-                <p className="lead text-gray">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
+                <Title>Little Lemon</Title>
+                <Subtitle>Chicago</Subtitle>
+                <p className="lead">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
                 <div>
                     <Button to="/booking">Reserve a Table</Button>
                 </div>

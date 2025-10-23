@@ -1,7 +1,7 @@
 import Container from "./Container.jsx";
 
 const Hero = ({children, alt, image}) => {
-    return (<section className={"hero"}>
+    return (<section className={"hero page-head"}>
             <Container>
                 <div className={"hero-content"}>
                     {children

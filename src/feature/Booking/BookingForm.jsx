@@ -1,3 +1,6 @@
+import SectionTitle from "../helpers/SectionTitle.jsx";
+import Button from "../helpers/Button.jsx";
+
 const BookingForm = ({date, setDate, availableTimes, guests, setGuests, occasion, setOccasion, occasions}) => {
     const handleDateChange = (e) => {
         const yearMonthDay = e.target.value.split("-");
@@ -16,55 +19,58 @@ const BookingForm = ({date, setDate, availableTimes, guests, setGuests, occasion
     }
     const [times, dispatchTime] = availableTimes;
     return (
-        <form style={{display: "grid", maxWidth: "200px", gap: "20px"}}>
-            <label htmlFor="res-date">Choose date</label>
-            <input
-                type="date"
-                id="res-date"
-                value={parseDate(date)}
-                onChange={handleDateChange}
-            />
-            <label htmlFor="res-time">Choose time</label>
-            <select id="res-time "
-                    value={times.selectedTime}
-                    onChange={(e) => dispatchTime({type: "UPDATE_SELECTED_TIME", selectedTime: e.target.value})}
-            >
-                {
-                    times.availableTimes.map((time, index) =>
+        <section className={"booking-form"}>
+            <SectionTitle color={"black"}>Book Now</SectionTitle>
+            <form style={{display: "grid", gap: "20px"}}>
+                <label htmlFor="res-date">Choose date</label>
+                <input
+                    type="date"
+                    id="res-date"
+                    value={parseDate(date)}
+                    onChange={handleDateChange}
+                />
+                <label htmlFor="res-time">Choose time</label>
+                <select id="res-time "
+                        value={times.selectedTime}
+                        onChange={(e) => dispatchTime({type: "UPDATE_SELECTED_TIME", selectedTime: e.target.value})}
+                >
+                    {
+                        times.availableTimes.map((time, index) =>
+                            <option
+                                key={time.replace("\:", "")}
+                                value={index}
+                            >
+                                {time}
+                            </option>
+                        )
+                    }
+                </select>
+                <label htmlFor="guests">Number of guests</label>
+                <input
+                    type="number"
+                    placeholder="1"
+                    min="1"
+                    max="10"
+                    id="guests"
+                    value={guests}
+                    onChange={(e) => setGuests(e.target.value)}
+                />
+                <label htmlFor="occasion">Occasion</label>
+                <select id="occasion"
+                        value={occasion}
+                        onChange={(e) => setOccasion(e.target.value)}
+                >
+                    {occasions.map((occasion, index) =>
                         <option
-                            key={time.replace("\:", "")}
+                            key={occasion.key}
                             value={index}
                         >
-                            {time}
-                        </option>
-                    )
-                }
-            </select>
-            <label htmlFor="guests">Number of guests</label>
-            <input
-                type="number" A
-                placeholder="1"
-                min="1"
-                max="10"
-                id="guests"
-                value={guests}
-                onChange={(e) => setGuests(e.target.value)}
-            />
-            <label htmlFor="occasion">Occasion</label>
-            <select id="occasion"
-                    value={occasion}
-                    onChange={(e) => setOccasion(e.target.value)}
-            >
-                {occasions.map((occasion, index) =>
-                    <option
-                        key={occasion.key}
-                        value={index}
-                    >
-                        {occasion.display}
-                    </option>)}
-            </select>
-            <input type="submit" value="Make Your reservation" />
-        </form>
+                            {occasion.display}
+                        </option>)}
+                </select>
+                <Button className={"on-gray"}>Make Your reservation </Button>
+            </form>
+        </section>
     );
 };
 
