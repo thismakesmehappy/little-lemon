@@ -1,32 +1,48 @@
-const BookingForm = ({date, setDate, time, setTime, guests, setGuests, occasion, setOccasion, occasions, times}) => {
+const BookingForm = ({date, setDate, availableTimes, guests, setGuests, occasion, setOccasion, occasions}) => {
+    const handleDateChange = (e) => {
+        const yearMonthDay = e.target.value.split("-");
+        const newDate = new Date(
+            parseInt(yearMonthDay[0]),
+            (yearMonthDay[1] - 1),
+            parseInt(yearMonthDay[2]));
+        setDate(newDate);
+    }
+
+    const parseDate = (date) => {
+        const year = String(date.getFullYear());
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`
+    }
+    const [times, dispatchTime] = availableTimes;
     return (
         <form style={{display: "grid", maxWidth: "200px", gap: "20px"}}>
             <label htmlFor="res-date">Choose date</label>
             <input
                 type="date"
                 id="res-date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+                value={parseDate(date)}
+                onChange={handleDateChange}
             />
             <label htmlFor="res-time">Choose time</label>
             <select id="res-time "
-                    value={time}
-                    onChange={(e) => setTime(e.target.value)}
+                    value={times.selectedTime}
+                    onChange={(e) => dispatchTime({type: "UPDATE_SELECTED_TIME", selectedTime: e.target.value})}
             >
                 {
-                    times.map((timeSlot, index) =>
+                    times.availableTimes.map((time, index) =>
                         <option
-                            key={timeSlot.replace("\:", "")}
+                            key={time.replace("\:", "")}
                             value={index}
                         >
-                            {timeSlot}
+                            {time}
                         </option>
                     )
                 }
             </select>
             <label htmlFor="guests">Number of guests</label>
             <input
-                type="number"
+                type="number" A
                 placeholder="1"
                 min="1"
                 max="10"
