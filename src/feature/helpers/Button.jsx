@@ -1,4 +1,4 @@
-const Button = ({children, to, type, onClickAction, className}) => {
+const Button = ({children, to, type, onClickAction, className, role}) => {
     let buttonClassName = className ? className : "";
     switch (type) {
         case "primary":
@@ -17,10 +17,12 @@ const Button = ({children, to, type, onClickAction, className}) => {
             buttonClassName += " btn btn-primary";
     }
 
+    const optionalProps = {...(onClickAction && {onClick: onClickAction}), ...role && {role: role}}
+
     if (to) {
         return (
             <a href={to}>
-                <button {...(onClickAction && {onClick: onClickAction})}
+                <button {...optionalProps}
                         className={buttonClassName}>{children}</button>
             </a>)
     }

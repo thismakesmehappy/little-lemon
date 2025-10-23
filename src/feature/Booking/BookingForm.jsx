@@ -1,7 +1,9 @@
 import SectionTitle from "../helpers/SectionTitle.jsx";
 import Button from "../helpers/Button.jsx";
+import {useState} from "react";
 
 const BookingForm = ({date, setDate, availableTimes, guests, setGuests, occasion, setOccasion, occasions}) => {
+    const [submitted, setSubmitted] = useState(false);
     const handleDateChange = (e) => {
         const yearMonthDay = e.target.value.split("-");
         const newDate = new Date(
@@ -17,11 +19,16 @@ const BookingForm = ({date, setDate, availableTimes, guests, setGuests, occasion
         const day = String(date.getDate()).padStart(2, "0");
         return `${year}-${month}-${day}`
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmitted(true);
+    }
     const [times, dispatchTime] = availableTimes;
     return (
         <section className={"booking-form"}>
             <SectionTitle color={"black"}>Book Now</SectionTitle>
-            <form style={{display: "grid", gap: "20px"}}>
+            <form style={{display: "grid", gap: "20px"}} onSubmit={handleSubmit}>
                 <label htmlFor="res-date">Choose date</label>
                 <input
                     type="date"
@@ -68,8 +75,9 @@ const BookingForm = ({date, setDate, availableTimes, guests, setGuests, occasion
                             {occasion.display}
                         </option>)}
                 </select>
-                <Button className={"on-gray"}>Make Your reservation </Button>
+                <Button className={"on-gray"} role={"submit"}>Make Your reservation </Button>
             </form>
+            {submitted && <p className={"text-black"}>Thank you for your reservation!</p>}
         </section>
     );
 };
