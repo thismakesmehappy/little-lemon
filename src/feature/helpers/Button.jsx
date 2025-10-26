@@ -1,4 +1,4 @@
-const Button = ({children, to, role, onClickAction, className, type}) => {
+const Button = ({children, to, role, onClickAction, className, type, disabled}) => {
     let buttonClassName = className ? className : "";
     switch (role) {
         case "primary":
@@ -23,12 +23,20 @@ const Button = ({children, to, role, onClickAction, className, type}) => {
         return (
             <a href={to}>
                 <button {...optionalProps}
-                        className={buttonClassName}>{children}</button>
+                        className={buttonClassName}
+                        disabled={disabled}
+                >
+                    {children}
+                </button>
             </a>)
     }
 
     return <button {...(onClickAction && {onClick: onClickAction})}
-                   className={buttonClassName}>{children}</button>
+                   className={buttonClassName}
+                   disabled={disabled}
+    >
+        {children}
+    </button>
 }
 
 export default Button;

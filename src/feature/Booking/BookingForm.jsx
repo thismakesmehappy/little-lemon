@@ -1,5 +1,7 @@
 import SectionTitle from "../helpers/SectionTitle.jsx";
 import Button from "../helpers/Button.jsx";
+import {useState} from "react";
+import FormError from "./FormError.jsx";
 
 const BookingForm = ({
                          date,
@@ -12,6 +14,7 @@ const BookingForm = ({
                          occasions,
                          submitForm
                      }) => {
+    const [errors, setErrors] = useState({})
     const handleDateChange = (e) => {
         const yearMonthDay = e.target.value.split("-");
         const newDate = new Date(
@@ -19,6 +22,42 @@ const BookingForm = ({
             (yearMonthDay[1] - 1),
             parseInt(yearMonthDay[2]));
         setDate(newDate);
+        if (newDate === null || newDate === undefined) {
+            setErrors({...errors, date: "Date must be entered"})
+        } else if (newDate < new Date()) {
+            setErrors({...errors, date: "Date cannot be in the past"})
+        } else {
+            delete errors.date;
+        }
+    }
+
+    const handleGuestChange = (e) => {
+        const value = e.target.value;
+        setGuests(value);
+        if (value === "") {
+            setErrors({...errors, guests: "Number of guests cannot be empty"})
+        } else if (value < 1 || value > 10) {
+            setErrors({...errors, guests: "Number of guests must be between 1 and 10"})
+        } else {
+            delete errors.guests;
+        }
+    }
+
+    const handleTimeChange = (e) => {
+        dispatchTime({type: "UPDATE_SELECTED_TIME", selectedTime: e.target.value})
+        if (e.target.value === "") {
+            setErrors({...errors, time: "Time cannot be empty"})
+        } else {
+            delete errors.time;
+        }
+    }
+    const handleOccasionChange = (e) => {
+        setOccasion(e.target.value)
+        if (e.target.value === "") {
+            setErrors({...errors, occasion: "Occasion cannot be empty"})
+        } else {
+            delete errors.occasion;
+        }
     }
 
     const parseDate = (date) => {
@@ -38,53 +77,74 @@ const BookingForm = ({
         <section className={"booking-form"}>
             <SectionTitle color={"black"}>Book Now</SectionTitle>
             <form style={{display: "grid", gap: "20px"}} onSubmit={handleSubmit}>
-                <label htmlFor="res-date">Choose date</label>
-                <input
-                    type="date"
-                    id="res-date"
-                    value={parseDate(date)}
-                    onChange={handleDateChange}
-                />
-                <label htmlFor="res-time">Choose time</label>
-                <select id="res-time "
-                        value={times.selectedTime}
-                        onChange={(e) => dispatchTime({type: "UPDATE_SELECTED_TIME", selectedTime: e.target.value})}
-                >
-                    {
-                        times.availableTimes.map((time, index) =>
+                <fieldset>
+                    <label htmlFor="res-date">Choose date</label>
+                    <input
+                        type="date"
+                        id="res-date"
+                        value={parseDate(date)}
+                        onChange={handleDateChange}
+                        className={errors.date && "error"}
+                    />
+                    <FormError error={errors.date} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="res-time">Choose time</label>
+                    <select id="res-time "
+                            required
+                            value={times.selectedTime}
+                            onChange={handleTimeChange}
+                            className={errors.time && "error"}
+                    >
+                        {
+                            times.availableTimes.map((time, index) =>
+                                <option
+                                    key={time.replace("\:", "")}
+                                    value={index}
+                                >
+                                    {time}
+                                </option>
+                            )
+                        }
+                    </select>
+                    <FormError error={errors.time} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="guests">Number of guests</label>
+                    <input
+                        type="number"
+                        placeholder="1"
+                        min="1"
+                        max="10"
+                        id="guests"
+                        value={guests}
+                        required
+                        onChange={handleGuestChange}
+                        className={errors.guests && "error"}
+                        onBlur={handleGuestChange}
+                    />
+                    <FormError error={errors.guests} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="occasion">Occasion</label>
+                    <select id="occasion"
+                            value={occasion}
+                            required
+                            onChange={handleOccasionChange}
+                            className={errors.occasion && "error"}
+                    >
+                        {occasions.map((occasion, index) =>
                             <option
-                                key={time.replace("\:", "")}
+                                key={occasion.key}
                                 value={index}
                             >
-                                {time}
-                            </option>
-                        )
-                    }
-                </select>
-                <label htmlFor="guests">Number of guests</label>
-                <input
-                    type="number"
-                    placeholder="1"
-                    min="1"
-                    max="10"
-                    id="guests"
-                    value={guests}
-                    onChange={(e) => setGuests(e.target.value)}
-                />
-                <label htmlFor="occasion">Occasion</label>
-                <select id="occasion"
-                        value={occasion}
-                        onChange={(e) => setOccasion(e.target.value)}
-                >
-                    {occasions.map((occasion, index) =>
-                        <option
-                            key={occasion.key}
-                            value={index}
-                        >
-                            {occasion.display}
-                        </option>)}
-                </select>
-                <Button className={"on-gray"} type={"submit"}>Make Your reservation </Button>
+                                {occasion.display}
+                            </option>)}
+                    </select>
+                    <FormError error={errors.occasion} />
+                </fieldset>
+                <Button className={"on-gray"} type={"submit"} disabled={Object.keys(errors).length > 0
+                }>Make Your reservation </Button>
             </form>
         </section>
     );

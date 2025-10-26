@@ -32,6 +32,20 @@
     border-color: var(--secondary-peach);
 }
 
+.btn:disabled {
+    background-color: var(--secondary-gray);
+    color: var(--primary-green);
+    border-color: var(--secondary-gray);
+    cursor: not-allowed;
+}
+
+.btn:disabled.on-gray {
+    background-color: #fff;
+    color: var(--primary-grey);
+    border-color: #fff;
+    cursor: not-allowed;
+}
+
 .btn.btn-secondary {
     background-color: var(--secondary-cream);
     border-color: var(--secondary-peach);

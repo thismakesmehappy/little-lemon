@@ -1,0 +1,19 @@
+input.error {
+    border: 2px solid red;
+}
+
+.form-error {
+    color: red;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset label {
+    margin-bottom: 0.5rem;
+}
