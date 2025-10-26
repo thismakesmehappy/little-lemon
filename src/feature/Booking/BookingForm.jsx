@@ -3,6 +3,13 @@ import Button from "../helpers/Button.jsx";
 import {useState} from "react";
 import FormError from "./FormError.jsx";
 
+export const parseDate = (date) => {
+    const year = String(date.getFullYear());
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`
+}
+
 const BookingForm = ({
                          date,
                          setDate,
@@ -60,12 +67,6 @@ const BookingForm = ({
         }
     }
 
-    const parseDate = (date) => {
-        const year = String(date.getFullYear());
-        const month = String(date.getMonth() + 1).padStart(2, "0");
-        const day = String(date.getDate()).padStart(2, "0");
-        return `${year}-${month}-${day}`
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -85,6 +86,7 @@ const BookingForm = ({
                         value={parseDate(date)}
                         onChange={handleDateChange}
                         className={errors.date && "error"}
+                        data-testid={"date-input"}
                     />
                     <FormError error={errors.date} />
                 </fieldset>
@@ -122,6 +124,7 @@ const BookingForm = ({
                         onChange={handleGuestChange}
                         className={errors.guests && "error"}
                         onBlur={handleGuestChange}
+                        data-testid={"guests-input"}
                     />
                     <FormError error={errors.guests} />
                 </fieldset>

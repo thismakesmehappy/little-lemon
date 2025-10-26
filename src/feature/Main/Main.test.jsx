@@ -29,7 +29,7 @@ test("updateTimes should update availableTimes when action type is UPDATE_TIMES"
 
     // Mock state and action
     const initialState = {availableTimes: [], selectedTime: 0};
-    const action = {roles: "UPDATE_TIMES", date: new Date("2025-10-25")};
+    const action = {type: "UPDATE_TIMES", date: new Date("2025-10-25")};
 
     // Call updateTimes
     const result = updateTimes(initialState, action);
@@ -43,7 +43,7 @@ test("updateTimes should update availableTimes when action type is UPDATE_TIMES"
 // Test updateTimes for `UPDATE_SELECTED_TIME`
 test("updateTimes should update selectedTime when action type is UPDATE_SELECTED_TIME", () => {
     const initialState = {availableTimes: ["18:00", "18:30"], selectedTime: 0};
-    const action = {roles: "UPDATE_SELECTED_TIME", selectedTime: 1};
+    const action = {type: "UPDATE_SELECTED_TIME", selectedTime: 1};
 
     // Call updateTimes
     const result = updateTimes(initialState, action);
@@ -56,7 +56,7 @@ test("updateTimes should update selectedTime when action type is UPDATE_SELECTED
 // Test updateTimes for invalid action type
 test("updateTimes should handle invalid action types gracefully", () => {
     const initialState = {availableTimes: ["18:00", "18:30"], selectedTime: 0};
-    const action = {roles: "INVALID_ACTION"};
+    const action = {type: "INVALID_ACTION"};
 
     // Call updateTimes
     const result = updateTimes(initialState, action);
