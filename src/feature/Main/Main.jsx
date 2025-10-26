@@ -6,12 +6,12 @@ import {fetchAPI, submitAPI} from "../../api/api.js";
 import ConfirmedBooking from "../Booking/ConfirmedBooking.jsx";
 
 export const updateTimes = (state, action) => {
-    const times = fetchAPI(action.date);
-    console.log(times);
-    if (action.roles === "UPDATE_TIMES") {
+    if (action.type === "UPDATE_TIMES") {
+        const times = fetchAPI(action.date);
+        console.log(times);
         return {...state, availableTimes: times}
     }
-    if (action.roles === "UPDATE_SELECTED_TIME") {
+    if (action.type === "UPDATE_SELECTED_TIME") {
         return {...state, selectedTime: action.selectedTime}
     }
     return state;
