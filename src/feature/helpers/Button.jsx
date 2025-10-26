@@ -21,19 +21,16 @@ const Button = ({children, to, role, onClickAction, className, type, disabled}) 
 
     if (to) {
         return (
-            <a href={to}>
-                <button {...optionalProps}
-                        className={buttonClassName}
-                        disabled={disabled}
-                >
-                    {children}
-                </button>
-            </a>)
+            <a href={to} className={buttonClassName} aria-label="On Click" role="button">
+                {children}
+            </a>
+        )
     }
 
     return <button {...(onClickAction && {onClick: onClickAction})}
                    className={buttonClassName}
                    disabled={disabled}
+                   aria-label="On Click"
     >
         {children}
     </button>

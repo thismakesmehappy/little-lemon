@@ -32,7 +32,7 @@ const Main = () => {
     }
 
     return (
-        <main>
+        <main role="main">
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/booking"

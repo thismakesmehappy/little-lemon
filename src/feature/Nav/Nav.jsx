@@ -2,7 +2,7 @@ import Link from "../helpers/Link.jsx";
 
 const Nav = () => {
     return (
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <ul>
                 <li>
                     <Link to="/">Home</Link>

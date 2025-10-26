@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer>
+        <footer role="contentinfo">
             &copy; 2025 Little Lemon
         </footer>
     );

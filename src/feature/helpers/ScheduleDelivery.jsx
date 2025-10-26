@@ -8,7 +8,9 @@ library.add(fab, far, fas);
 
 const ScheduleDelivery = () => {
     return (
-        <p className={"schedule-delivery"}><FontAwesomeIcon icon={'person-biking'} /> Schedule Delivery</p>
+        <button className={"schedule-delivery"} aria-label="On Click">
+            <FontAwesomeIcon icon={'person-biking'} /> Schedule Delivery
+        </button>
     )
 }
 

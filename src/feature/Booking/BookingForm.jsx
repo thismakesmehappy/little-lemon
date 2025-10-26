@@ -76,8 +76,8 @@ const BookingForm = ({
     const [times, dispatchTime] = availableTimes;
     return (
         <section className={"booking-form"}>
-            <SectionTitle color={"black"}>Book Now</SectionTitle>
-            <form style={{display: "grid", gap: "20px"}} onSubmit={handleSubmit}>
+            <SectionTitle color={"black"} id="booking-title">Book Now</SectionTitle>
+            <form style={{display: "grid", gap: "20px"}} onSubmit={handleSubmit} role="form" aria-labelledby="booking-title">
                 <fieldset>
                     <label htmlFor="res-date">Choose date</label>
                     <input
