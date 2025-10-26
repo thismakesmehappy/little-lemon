@@ -1,6 +1,7 @@
+import {colorClass} from "./helperMethods.js";
+
 const Subtitle = ({children, color, className}) => {
-    const colorClass = color ? "text-" + color : "";
-    return (<h3 className={`${className} ${colorClass}`}
+    return (<h3 className={`${className} ${colorClass(color)}`}
     >
         {children}</h3>);
 }

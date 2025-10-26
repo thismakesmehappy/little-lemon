@@ -1,0 +1,1 @@
+export const colorClass = (color) => color ? "text-" + color : "";

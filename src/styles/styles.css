@@ -4,7 +4,6 @@
 @import "./grid.css";
 @import "./reset.css";
 @import "./buttons.css";
-@import "./forms.css";
 
 :root {
     --primary-green: #495e57;
@@ -174,7 +173,7 @@ p.highlight {
 
 .hero .container {
     display: grid;
-    grid-template-columns: 20rem 1fr 200px;
+    grid-template-columns: 20rem 1fr 300px;
     grid-template-areas: "hero-content . hero-image";
     margin-bottom: 75px;
 }
@@ -240,5 +239,10 @@ p.highlight {
     margin-bottom: 0;
 }
 
+p.display {
+    font-size: 3rem;
+    font-family: var(--text-serif);
+    font-style: italic;
+}
 
 

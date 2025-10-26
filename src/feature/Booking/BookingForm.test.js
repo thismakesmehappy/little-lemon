@@ -12,6 +12,7 @@ const mockSetGuests = jest.fn();
 const mockSetOccasion = jest.fn();
 const mockOccasions = [];
 const mockOccasion = 0
+const mockSubmitForm = jest.fn();
 
 test('Renders the BookingForm heading', () => {
     render(<BookingForm
@@ -39,6 +40,7 @@ test("Calls handleSubmit when the form is submitted", async () => {
         occasion={mockOccasion}
         setOccasion={mockSetOccasion}
         occasions={mockOccasions}
+        submitForm={mockSubmitForm}
     />);
 
     let confirmation = screen.queryByText(/Thank you/i);
@@ -47,8 +49,7 @@ test("Calls handleSubmit when the form is submitted", async () => {
     const submitButton = screen.getByRole("button");
     await userEvent.click(submitButton);
 
-    confirmation = screen.getByText(/Thank you/i);
-    expect(confirmation).toBeInTheDocument();
+    expect(mockSubmitForm).toHaveBeenCalled();
 
 });
 

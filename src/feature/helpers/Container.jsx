@@ -1,5 +1,5 @@
-const Container = ({children}) => {
-    return (<div className={"container"}>
+const Container = ({children, className}) => {
+    return (<div className={`container ${className}`}>
         {children}
     </div>);
 }

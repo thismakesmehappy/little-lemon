@@ -1,6 +1,6 @@
-const Button = ({children, to, type, onClickAction, className, role}) => {
+const Button = ({children, to, role, onClickAction, className, type}) => {
     let buttonClassName = className ? className : "";
-    switch (type) {
+    switch (role) {
         case "primary":
             buttonClassName += " btn btn-primary";
             break;
@@ -17,7 +17,7 @@ const Button = ({children, to, type, onClickAction, className, role}) => {
             buttonClassName += " btn btn-primary";
     }
 
-    const optionalProps = {...(onClickAction && {onClick: onClickAction}), ...role && {role: role}}
+    const optionalProps = {...(onClickAction && {onClick: onClickAction}), ...type && {type: type}}
 
     if (to) {
         return (

@@ -1,9 +1,17 @@
 import SectionTitle from "../helpers/SectionTitle.jsx";
 import Button from "../helpers/Button.jsx";
-import {useState} from "react";
 
-const BookingForm = ({date, setDate, availableTimes, guests, setGuests, occasion, setOccasion, occasions}) => {
-    const [submitted, setSubmitted] = useState(false);
+const BookingForm = ({
+                         date,
+                         setDate,
+                         availableTimes,
+                         guests,
+                         setGuests,
+                         occasion,
+                         setOccasion,
+                         occasions,
+                         submitForm
+                     }) => {
     const handleDateChange = (e) => {
         const yearMonthDay = e.target.value.split("-");
         const newDate = new Date(
@@ -22,8 +30,9 @@ const BookingForm = ({date, setDate, availableTimes, guests, setGuests, occasion
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSubmitted(true);
+        submitForm(e);
     }
+
     const [times, dispatchTime] = availableTimes;
     return (
         <section className={"booking-form"}>
@@ -75,9 +84,8 @@ const BookingForm = ({date, setDate, availableTimes, guests, setGuests, occasion
                             {occasion.display}
                         </option>)}
                 </select>
-                <Button className={"on-gray"} role={"submit"}>Make Your reservation </Button>
+                <Button className={"on-gray"} type={"submit"}>Make Your reservation </Button>
             </form>
-            {submitted && <p className={"text-black"}>Thank you for your reservation!</p>}
         </section>
     );
 };

@@ -1,10 +1,11 @@
 export default {
-    testEnvironment: "jsdom", // Simulate browser environment
+    testEnvironment: "jsdom",
     transform: {
-        "^.+\\.[jt]sx?$": "babel-jest", // Use babel-jest for JavaScript and JSX transformation
+        "^.+\\.[jt]sx?$": "babel-jest",
     },
     moduleNameMapper: {
-        "\\.(css|less|scss|sass)$": "identity-obj-proxy", // Mock CSS modules
-        "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/__mocks__/fileMock.js", // Mock static assets
+        "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+        "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/__mocks__/fileMock.js",
     },
+    setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
 };

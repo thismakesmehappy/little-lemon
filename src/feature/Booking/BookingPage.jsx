@@ -5,7 +5,7 @@ import {occasions} from "./data/consts.js";
 import PageHead from "../helpers/PageHead.jsx";
 import Title from "../helpers/Title.jsx";
 
-const BookingPage = ({availableTimes}) => {
+const BookingPage = ({availableTimes, submitForm}) => {
     const [availableOccasions, setAvailableOccasions] = useState(occasions);
     const [date, setDate] = useState(new Date());
     const [guests, setGuests] = useState(1);
@@ -28,6 +28,7 @@ const BookingPage = ({availableTimes}) => {
                     setOccasion={setOccasion}
                     occasions={availableOccasions}
                     availableTimes={availableTimes}
+                    submitForm={submitForm}
                 />
             </Container>
         </section>
